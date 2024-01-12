@@ -433,3 +433,4 @@ google-services.json
 
 # local properties
 local.properties
+local.*.properties
