@@ -22,7 +22,7 @@ object TMDBApiFactory {
 private class TMDBApiImplementation () : TMDBApi {
     private val retrofit =
         Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3")
+            .baseUrl("")
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -56,27 +56,27 @@ private class TMDBApiImplementation () : TMDBApi {
     }
 
     private interface Api {
-        @POST("authenticate")
-        suspend fun postAuthenticate(
-            @Query("userName") userName: String, @Query("password") password: String
-        ): String
-
-        @GET("canteens")
-        suspend fun getCanteens(@Query("name") name: String): List<ApiCanteenData>
-
-        @GET("canteens/{canteenId}")
-        suspend fun getCanteen(@Path("canteenId") canteenId: String): ApiCanteenDetails
-
-        @GET("canteens/{canteenId}/review-statistics")
-        suspend fun getReviewStatisticsForCanteen(@Path("canteenId") canteenId: String): ApiCanteenReviewStatistics
-
-        @POST("canteens/{canteenId}/reviews")
-        suspend fun postCanteenReview(
-            @Header("Authorization") authenticationToken: String,
-            @Path("canteenId") canteenId: String,
-            @Query("rating") rating: Int,
-            @Query("remark") remark: String
-        ) : Response<Unit>
+//        @POST("authenticate")
+//        suspend fun postAuthenticate(
+//            @Query("userName") userName: String, @Query("password") password: String
+//        ): String
+//
+//        @GET("canteens")
+//        suspend fun getCanteens(@Query("name") name: String): List<ApiCanteenData>
+//
+//        @GET("canteens/{canteenId}")
+//        suspend fun getCanteen(@Path("canteenId") canteenId: String): ApiCanteenDetails
+//
+//        @GET("canteens/{canteenId}/review-statistics")
+//        suspend fun getReviewStatisticsForCanteen(@Path("canteenId") canteenId: String): ApiCanteenReviewStatistics
+//
+//        @POST("canteens/{canteenId}/reviews")
+//        suspend fun postCanteenReview(
+//            @Header("Authorization") authenticationToken: String,
+//            @Path("canteenId") canteenId: String,
+//            @Query("rating") rating: Int,
+//            @Query("remark") remark: String
+//        ) : Response<Unit>
     }
 
 //    private class ApiCanteenData(

@@ -1,11 +1,28 @@
+import org.jetbrains.kotlin.gradle.utils.loadPropertyFromResources
+
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
 
+//fun getApiKey(s: String): String {
+//    val items = HashMap<String, String>()
+//    val fl = rootProject.file("app/keys.properties")
+//    (fl.exists())?.let {
+//        fl.forEachLine {
+//            items[it.split("=")[0]] = it.split("=")[1]
+//        }
+//    }
+//    return items[s]!!
+//}
+
 android {
     namespace = "com.example.canteenchecker.moviepicker"
     compileSdk = 34
+
+    buildFeatures.buildConfig = true
 
     defaultConfig {
         applicationId = "com.example.canteenchecker.moviepicker"
@@ -15,6 +32,14 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
+        val props = Properties()
+        props.load(project.rootProject.file("local.apikey.properties").inputStream())
+
+        buildConfigField("String", "TMDBBaseUrl", props.getProperty("TMDBBaseUrl"))
+        buildConfigField("String", "TMDBToken", props.getProperty("TMDBToken"))
+        buildConfigField("String", "BackendBaseUrl", props.getProperty("BackendBaseUrl"))
     }
 
     buildTypes {
