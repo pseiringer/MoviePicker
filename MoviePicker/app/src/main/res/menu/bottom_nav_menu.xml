@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_watchlist"
+        android:icon="@drawable/ic_baseline_watch_later_24dp"
+        android:title="@string/title_watchlist" />
+
+    <item
+        android:id="@+id/navigation_polls"
+        android:icon="@drawable/ic_baseline_poll_24dp"
+        android:title="@string/title_polls" />
+
+
+</menu>

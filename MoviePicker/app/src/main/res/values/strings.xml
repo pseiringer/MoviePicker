@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MoviePicker</string>
+    <string name="title_watchlist">Watchlist</string>
+    <string name="title_polls">Polls</string>
+</resources>
