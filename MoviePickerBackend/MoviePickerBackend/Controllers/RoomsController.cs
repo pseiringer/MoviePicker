@@ -64,7 +64,7 @@ namespace MoviePickerBackend.Controllers
                         throw new InvalidOperationException($"Unexpected result: {result}");
                 }
             }
-            return Ok(result.Value);
+            return NoContent();
         }
         [HttpPut("{roomCode}")]
         public async Task<ActionResult> CloseRoom([FromRoute] string roomCode)

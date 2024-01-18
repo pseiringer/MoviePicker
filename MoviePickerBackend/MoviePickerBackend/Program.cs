@@ -33,14 +33,14 @@ namespace MoviePickerBackend
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
+            //if (app.Environment.IsDevelopment())
+            //{
                 app.UseOpenApi();
                 app.UseSwaggerUi(setting => setting.Path = "/swagger");
                 app.UseReDoc(setting => setting.Path = "/redoc");
-            }
+            //}
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseAuthorization();
 

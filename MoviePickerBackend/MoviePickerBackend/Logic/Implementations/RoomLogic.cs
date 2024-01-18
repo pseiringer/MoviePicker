@@ -28,6 +28,7 @@ namespace MoviePickerBackend.Logic.Implementations
 
         public Task<LogicResult> CloseRoom(string roomCode)
         {
+            roomCode = roomCode.ToUpper();
             var room = db.Rooms.FirstOrDefault(x => x.RoomCode == roomCode);
             if (room == null)
             {
@@ -58,6 +59,7 @@ namespace MoviePickerBackend.Logic.Implementations
 
         public Task<LogicResult<RoomDTO>> GetRoom(string roomCode)
         {
+            roomCode = roomCode.ToUpper();
             var room = db.Rooms
                 .Include(x => x.Votes)
                 .FirstOrDefault(x => x.RoomCode == roomCode);
@@ -70,6 +72,7 @@ namespace MoviePickerBackend.Logic.Implementations
 
         public Task<LogicResult> RemoveRoom(string roomCode)
         {
+            roomCode = roomCode.ToUpper();
             var rooms = db.Rooms.Where(x => x.RoomCode == roomCode);
             if (rooms.Count() == 0)
                 return Task.FromResult(new LogicResult());
@@ -81,6 +84,7 @@ namespace MoviePickerBackend.Logic.Implementations
 
         public Task<LogicResult> Vote(string roomCode, VoteDTO vote)
         {
+            roomCode = roomCode.ToUpper();
             var room = db.Rooms.FirstOrDefault(x => x.RoomCode == roomCode);
             if (room == null)
             {

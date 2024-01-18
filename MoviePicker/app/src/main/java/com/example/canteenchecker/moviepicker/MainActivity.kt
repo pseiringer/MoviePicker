@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+//        Log.w(MainActivity::class.java.getName(), BuildConfig.TMDBBaseUrl)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
