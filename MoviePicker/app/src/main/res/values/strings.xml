@@ -25,4 +25,15 @@
     <string name="placeholder_text_runtime">%d min.</string>
     <string name="text_add_to_watchlist">Add to Watchlist</string>
     <string name="text_remove_from_watchlist">Remove from Watchlist</string>
+    <string name="text_create_new_room">Create New Room</string>
+    <string name="text_join_existing_room">Join Existing Room</string>
+    <string name="hint_room_code">RoomCode</string>
+    <string name="text_room_does_not_exist">This room does not exist</string>
+    <string name="text_could_not_create_room">Could not create room. Please try again later</string>
+    <string name="text_vote_for_watchlist">Vote for Watchlist</string>
+    <string name="placeholder_text_room_code">Room: %s</string>
+    <string name="text_votes">Votes:</string>
+    <string name="text_add_vote">Add Vote</string>
+    <string name="text_invalid">INVALID</string>
+    <string name="text_vote_failed">"Vote could not be sent. Please try again later."</string>
 </resources>

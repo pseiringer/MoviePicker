@@ -4,57 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
+    android:padding="@dimen/distance_small"
     tools:context=".ui.poll.PollFragment">
-
 
     <EditText
         android:id="@+id/edt_roomCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="RoomCode" />
-    <EditText
-        android:id="@+id/edt_voteId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:digits="0123456789"
-        android:hint="VoteId" />
+        android:hint="@string/hint_room_code"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:inputType="text" />
 
     <Button
-        android:id="@+id/btn_get"
+        android:id="@+id/btn_joinRoom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get"/>
-    <Button
-        android:id="@+id/btn_create"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Create"/>
-    <Button
-        android:id="@+id/btn_vote"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Vote"/>
-    <Button
-        android:id="@+id/btn_voteList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="VoteList"/>
-    <Button
-        android:id="@+id/btn_close"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Close"/>
-    <Button
-        android:id="@+id/btn_delete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete"/>
+        android:text="@string/text_join_existing_room" />
 
-    <TextView
-        android:id="@+id/text_output"
+    <Button
+        android:id="@+id/btn_createRoom"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_large"
+        android:text="@string/text_create_new_room" />
+
 </LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.RoomActivity"
+    android:padding="@dimen/distance_small">
+
+    <TextView
+        android:id="@+id/txv_roomCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Room: ASDF"
+        style="@style/TextAppearance.MaterialComponents.Headline4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl_votes"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        app:layout_constraintTop_toBottomOf="@id/txv_roomCode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_voteForWatchlist">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_votes"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:padding="@dimen/distance_small"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+    <Button
+        android:id="@+id/btn_voteForWatchlist"
+        app:layout_constraintTop_toBottomOf="@id/srl_votes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_vote_for_watchlist"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
