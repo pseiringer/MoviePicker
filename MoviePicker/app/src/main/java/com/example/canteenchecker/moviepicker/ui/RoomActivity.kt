@@ -70,8 +70,8 @@ class RoomActivity : AppCompatActivity() {
                 var moviePickerApi = MoviePickerApiFactory.createMoviePickerApi()
 
                 moviePickerApi.voteList(
-                        roomCode ?: "",
-                        VoteList(WatchlistManager.getWatchList(this@RoomActivity).entries))
+                    roomCode ?: "",
+                    VoteList(WatchlistManager.getWatchList(this@RoomActivity).entries))
                     .onSuccess {
                         loadRoomData()
                     }
@@ -79,6 +79,22 @@ class RoomActivity : AppCompatActivity() {
                         Toast.makeText(
                             this@RoomActivity,
                             getString(R.string.text_vote_failed),
+                            Toast.LENGTH_LONG).show()
+                    }
+            }
+        }
+        binding.btnLockRoom.setOnClickListener {
+            lifecycleScope.launch {
+                var moviePickerApi = MoviePickerApiFactory.createMoviePickerApi()
+
+                moviePickerApi.closeRoom(roomCode ?: "")
+                    .onSuccess {
+                        loadRoomData()
+                    }
+                    .onFailure {
+                        Toast.makeText(
+                            this@RoomActivity,
+                            getString(R.string.text_lock_failed),
                             Toast.LENGTH_LONG).show()
                     }
             }
@@ -97,6 +113,8 @@ class RoomActivity : AppCompatActivity() {
         var moviePickerApi = MoviePickerApiFactory.createMoviePickerApi()
         var room = moviePickerApi.getRoom(roomCode ?: "").getOrNull()
         if (room != null) {
+            setButtonsEnabled(!room.isClosed);
+
             var tmdb = TMDBApiFactory.createTMDBApi();
             cards.ensureCapacity(room.votes.size);
             val loadCardJobs = ArrayList<Job>()
@@ -127,7 +145,8 @@ class RoomActivity : AppCompatActivity() {
                                             movie.runtime,
                                             movie.adult,
                                             img,
-                                            vote.numVotes
+                                            vote.numVotes,
+                                            room.isClosed
                                         )
                                     );
                                     cards.sortByDescending { it.numVotes }
@@ -138,12 +157,21 @@ class RoomActivity : AppCompatActivity() {
                     )
                 }
             }
+            else {
+                setButtonsEnabled(false);
+            }
 
             loadCardJobs.forEach {
                 it.join()
             }
+            voteCardAdapter.displayVotes(cards);
             binding.srlVotes.isRefreshing = false
         }
+    }
+
+    private fun setButtonsEnabled(enabled: Boolean) {
+        binding.btnLockRoom.isEnabled = enabled
+        binding.btnVoteForWatchlist.isEnabled = enabled
     }
 
     private fun cardClicked(movieId: Int) {

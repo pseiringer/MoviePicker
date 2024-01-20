@@ -8,7 +8,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:strokeColor="@color/border"
     xmlns:tools="http://schemas.android.com/tools"
-    app:strokeWidth="1dip">
+    app:strokeWidth="1dip"
+    android:layout_margin="@dimen/distance_extra_small">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

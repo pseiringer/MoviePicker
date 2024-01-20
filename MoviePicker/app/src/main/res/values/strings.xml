@@ -36,4 +36,6 @@
     <string name="text_add_vote">Add Vote</string>
     <string name="text_invalid">INVALID</string>
     <string name="text_vote_failed">"Vote could not be sent. Please try again later."</string>
+    <string name="text_lock_failed">"Room could not be locked. Please try again later."</string>
+    <string name="text_lock_room">Lock Room</string>
 </resources>

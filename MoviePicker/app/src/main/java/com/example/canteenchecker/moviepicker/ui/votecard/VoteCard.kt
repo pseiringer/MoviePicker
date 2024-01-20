@@ -25,7 +25,8 @@ data class VoteCard(
     val runtime: Int,
     val adult: Boolean,
     val image: Bitmap,
-    val numVotes: Int
+    val numVotes: Int,
+    val locked: Boolean,
 )
 
 
@@ -67,6 +68,7 @@ class VoteCardAdapter(val addVoteClicked: (id: Int) -> Unit, val cardClicked: (i
         btnAddVote.setOnClickListener {
             addVoteClicked(vote.id)
         }
+        btnAddVote.isEnabled = !vote.locked
     }
 
 
