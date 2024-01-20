@@ -1,5 +1,9 @@
 # Read Me
 
+This app uses [The Movie DB](https://www.themoviedb.org/) as its primary data source.
+
+![alt text](https://github.com/pseiringer/MoviePicker/blob/main/tmdb_logo.svg)
+
 ## Hosting the Backend
 
 To create a docker image containing the backend, move into the folder "MoviePickerBackend\MoviePickerBackend" (the folder which contains the "dockerfile").
