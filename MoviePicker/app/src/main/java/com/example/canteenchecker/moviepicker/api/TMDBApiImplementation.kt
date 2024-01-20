@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory
 import android.util.Log
 import com.example.canteenchecker.moviepicker.BuildConfig
 import com.example.canteenchecker.moviepicker.core.tmdb.ConfigurationDetails
+import com.example.canteenchecker.moviepicker.core.tmdb.Credits
 import com.example.canteenchecker.moviepicker.core.tmdb.MovieDetails
 import com.example.canteenchecker.moviepicker.core.tmdb.MovieSearchResult
 import okhttp3.OkHttpClient
@@ -77,6 +78,10 @@ private class TMDBApiImplementation () : TMDBApi {
         getMovie(movieId, language)
     }
 
+    override suspend fun getCredits(movieId: Int): Result<Credits> = apiCall {
+        getCredits(movieId)
+    }
+
     private interface Api {
         @GET("configuration")
         suspend fun getConfigurationDetails(): ConfigurationDetails
@@ -86,12 +91,14 @@ private class TMDBApiImplementation () : TMDBApi {
 //        // https://www.geeksforgeeks.org/download-image-from-url-in-android/
         @GET("search/movie")
         suspend fun searchMovie(
-            @Query("query") query: String, @Query("includeAdult") includeAdult: Boolean?,
-            @Query("language") language: String?, @Query("primaryReleaseYear") primaryReleaseYear: String?,
+            @Query("query") query: String, @Query("include_adult") includeAdult: Boolean?,
+            @Query("language") language: String?, @Query("primary_release_year") primaryReleaseYear: String?,
             @Query("page") page: Int?, @Query("region") region: String?,
             @Query("year") year: String?): MovieSearchResult
-        @GET("movie/{movieId}")
-        suspend fun getMovie(@Path("movieId") movieId: Int, @Query("language") language: String?): MovieDetails
+        @GET("movie/{movie_id}")
+        suspend fun getMovie(@Path("movie_id") movieId: Int, @Query("language") language: String?): MovieDetails
+        @GET("movie/{movie_id}/credits")
+        suspend fun getCredits(@Path("movie_id") movieId: Int): Credits
 
     }
 
@@ -104,13 +111,6 @@ private class TMDBApiImplementation () : TMDBApi {
     }.onFailure {
         Log.e(TAG, "API call failed", it)
     }
-//    private inline fun apiCallImage(call: Api.() -> Call<ResponseBody?>?): Call<ResponseBody?>? = try {
-//        call(retrofit.create())
-//    } catch (ex: HttpException) {
-//        null
-//    } catch (ex: IOException) {
-//        null
-//    }
 
     companion object {
         private val TAG = this::class.simpleName

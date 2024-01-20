@@ -2,6 +2,7 @@ package com.example.canteenchecker.moviepicker.api
 
 import android.graphics.Bitmap
 import com.example.canteenchecker.moviepicker.core.tmdb.ConfigurationDetails
+import com.example.canteenchecker.moviepicker.core.tmdb.Credits
 import com.example.canteenchecker.moviepicker.core.tmdb.MovieDetails
 import com.example.canteenchecker.moviepicker.core.tmdb.MovieSearchResult
 
@@ -18,4 +19,5 @@ interface TMDBApi {
         region: String? = null,
         year: String? = null): Result<MovieSearchResult>
     suspend fun getMovie(movieId: Int, language: String? = null): Result<MovieDetails>
+    suspend fun getCredits(movieId: Int): Result<Credits>
 }

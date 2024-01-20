@@ -6,19 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.watchlist.WatchlistFragment">
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_movieCards"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <GridLayout
-            android:id="@+id/grd_movieCards"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:columnCount="4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-        </GridLayout>
-    </ScrollView>
+        android:padding="@dimen/distance_small"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_addMovie"
@@ -26,8 +19,9 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
-        android:layout_marginEnd="25dip"
-        android:layout_marginBottom="25dip"
+        android:layout_marginEnd="@dimen/fab_border_distance"
+        android:layout_marginBottom="@dimen/fab_border_distance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

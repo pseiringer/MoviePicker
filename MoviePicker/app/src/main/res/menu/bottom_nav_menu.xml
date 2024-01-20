@@ -11,5 +11,4 @@
         android:icon="@drawable/ic_baseline_poll_24dp"
         android:title="@string/title_polls" />
 
-
 </menu>

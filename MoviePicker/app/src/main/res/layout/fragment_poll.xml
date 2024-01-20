@@ -38,6 +38,11 @@
         android:layout_height="wrap_content"
         android:text="Vote"/>
     <Button
+        android:id="@+id/btn_voteList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="VoteList"/>
+    <Button
         android:id="@+id/btn_close"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

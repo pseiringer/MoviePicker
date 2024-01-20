@@ -8,6 +8,7 @@ namespace MoviePickerBackend.Logic.Interfaces
         public Task<LogicResult<RoomDTO>> CreateRoom();
         public Task<LogicResult<RoomDTO>> GetRoom(string roomCode);
         public Task<LogicResult> Vote(string roomCode, VoteDTO vote);
+        public Task<LogicResult> VoteList(string roomCode, VoteListDTO votes);
         public Task<LogicResult> CloseRoom(string roomCode);
         public Task<LogicResult> RemoveRoom(string roomCode);
 

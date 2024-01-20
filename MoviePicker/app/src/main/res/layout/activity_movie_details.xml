@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/distance_small"
+    tools:context=".ui.MovieDetailsActivity">
+
+    <TextView
+        android:id="@+id/txv_detailsTitle"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/img_detailsImageCard"
+        style="@style/TextAppearance.MaterialComponents.Headline4"
+        android:layout_marginEnd="@dimen/distance_small"
+        tools:text="2001: A Space Odyssey"/>
+
+    <TextView
+        android:id="@+id/txv_detailsDirectedBy"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txv_detailsTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/img_detailsImageCard"
+        android:layout_marginTop="@dimen/distance_small"
+        android:layout_marginEnd="@dimen/distance_small"
+        android:text="@string/text_directed_by"/>
+    <TextView
+        android:id="@+id/txv_detailsDirector"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txv_detailsDirectedBy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/img_detailsImageCard"
+        android:layout_marginEnd="@dimen/distance_small"
+        tools:text="Stanley Kubrick"/>
+
+    <TextView
+        android:id="@+id/txv_detailsYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txv_detailsDirector"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/txv_detailsRuntime"
+        android:layout_marginTop="@dimen/distance_small"
+        android:layout_marginBottom="@dimen/distance_medium"
+        tools:text="1968"/>
+    <TextView
+        android:id="@+id/txv_detailsRuntime"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txv_detailsDirector"
+        app:layout_constraintStart_toEndOf="@id/txv_detailsYear"
+        app:layout_constraintBaseline_toBaselineOf="@id/txv_detailsYear"
+        app:layout_constraintEnd_toStartOf="@id/img_detailsImageCard"
+        android:layout_marginStart="@dimen/distance_small"
+        android:layout_marginEnd="@dimen/distance_small"
+        android:layout_marginBottom="@dimen/distance_medium"
+        tools:text="149 min."/>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/img_detailsImageCard"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/txv_detailsTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/txv_detailsSummary"
+        app:layout_constraintVertical_bias="0"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:strokeColor="@color/border"
+        app:strokeWidth="1dip">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_detailsImage"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        app:barrierDirection="bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="txv_detailsYear,txv_detailsRuntime,img_detailsImageCard"/>
+
+    <TextView
+        android:id="@+id/txv_detailsSummary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/distance_small"
+        tools:text="THE ULTIMATE TRIP.\n\nHumanity finds a mysterious object buried beneath the lunar surface and sets off to find its origins with the help of HAL 9000, the world’s most advanced super computer."/>
+
+    <Button
+        android:id="@+id/btn_toggleWatchlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txv_detailsSummary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginTop="@dimen/distance_small"
+        tools:text="Add/Remove from Watchlist"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

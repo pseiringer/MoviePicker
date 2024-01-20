@@ -17,4 +17,5 @@
         android:label="@string/title_polls"
         tools:layout="@layout/fragment_poll" />
 
+
 </navigation>

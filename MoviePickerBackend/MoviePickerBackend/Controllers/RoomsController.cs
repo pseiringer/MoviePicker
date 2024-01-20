@@ -59,7 +59,25 @@ namespace MoviePickerBackend.Controllers
                     case ErrorResult.NotFound:
                         return NotFound();
                     case ErrorResult.Closed:
-                        return BadRequest(new ProblemDetails() { Title="Room Closed", Detail="This room has already been closed" });
+                        return BadRequest(new ProblemDetails() { Title = "Room Closed", Detail = "This room has already been closed" });
+                    default:
+                        throw new InvalidOperationException($"Unexpected result: {result}");
+                }
+            }
+            return NoContent();
+        }
+        [HttpPost("{roomCode}/VoteList")]
+        public async Task<ActionResult> VoteList([FromRoute] string roomCode, [FromBody] VoteListDTO votes)
+        {
+            var result = await logic.VoteList(roomCode, votes);
+            if (!result.Success)
+            {
+                switch (result.Error)
+                {
+                    case ErrorResult.NotFound:
+                        return NotFound();
+                    case ErrorResult.Closed:
+                        return BadRequest(new ProblemDetails() { Title = "Room Closed", Detail = "This room has already been closed" });
                     default:
                         throw new InvalidOperationException($"Unexpected result: {result}");
                 }

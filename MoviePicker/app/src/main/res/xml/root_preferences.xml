@@ -1,0 +1,7 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+    <SwitchPreference
+        app:key="showAdult"
+        app:title="Adult Content"
+        app:summary="Include adult content in search results and in vote rooms"
+        />
+</PreferenceScreen>

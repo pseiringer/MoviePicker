@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.utils.loadPropertyFromResources
+import org.jetbrains.kotlin.ir.backend.js.compile
 
 import java.util.Properties
 
@@ -63,6 +64,7 @@ android {
     }
 }
 
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -73,6 +75,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+    implementation("androidx.preference:preference:1.2.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -84,4 +87,20 @@ dependencies {
 
     // Gson
     implementation("com.google.code.gson:gson:2.8.9")
+
+    // Material
+    implementation("com.google.android.material:material:1.0.0")
+
+    // SwipeRefresh
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
+
+    // Preferences
+    implementation("androidx.preference:preference-ktx:1.2.0")
+
+    // Blurry
+    implementation("jp.wasabeef:blurry:4.0.1")
+
+//    // Recycler View
+//    implementation("com.android.support:appcompat-v7:28.0.0")
+//    implementation("com.android.support:recyclerview-v7:28.0.0")
 }

@@ -5,6 +5,7 @@ import android.util.Log
 import com.example.canteenchecker.moviepicker.BuildConfig
 import com.example.canteenchecker.moviepicker.core.moviepicker.Room
 import com.example.canteenchecker.moviepicker.core.moviepicker.Vote
+import com.example.canteenchecker.moviepicker.core.moviepicker.VoteList
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.HttpException
@@ -58,6 +59,10 @@ private class MoviePickerApiImplementation () : MoviePickerApi {
         vote(roomCode, vote)
     }
 
+    override suspend fun voteList(roomCode: String, voteList: VoteList): Result<Unit> = apiCall {
+        voteList(roomCode, voteList)
+    }
+
 
     private interface Api {
 
@@ -75,6 +80,9 @@ private class MoviePickerApiImplementation () : MoviePickerApi {
 
         @POST("Rooms/{roomCode}/Votes")
         suspend fun vote(@Path("roomCode") roomCode: String, @Body vote: Vote): Response<Unit>
+
+        @POST("Rooms/{roomCode}/VoteList")
+        suspend fun voteList(@Path("roomCode") roomCode: String, @Body voteList: VoteList): Response<Unit>
 
     }
 

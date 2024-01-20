@@ -12,6 +12,7 @@ import com.example.canteenchecker.moviepicker.api.MoviePickerApi
 import com.example.canteenchecker.moviepicker.api.MoviePickerApiFactory
 import com.example.canteenchecker.moviepicker.api.TMDBApiFactory
 import com.example.canteenchecker.moviepicker.core.moviepicker.Vote
+import com.example.canteenchecker.moviepicker.core.moviepicker.VoteList
 import com.example.canteenchecker.moviepicker.databinding.FragmentPollBinding
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
@@ -62,6 +63,18 @@ class PollFragment : Fragment() {
             lifecycleScope.launch {
                 MoviePickerApiFactory.createMoviePickerApi()
                     .vote(binding.edtRoomCode.text.toString(), Vote(binding.edtVoteId.text.toString().toInt()))
+                    .onSuccess {
+                        binding.textOutput.text = "success"
+                    }
+                    .onFailure {
+                        binding.textOutput.text = "failed"
+                    }
+            }
+        }
+        binding.btnVoteList.setOnClickListener{
+            lifecycleScope.launch {
+                MoviePickerApiFactory.createMoviePickerApi()
+                    .voteList(binding.edtRoomCode.text.toString(), VoteList(listOf(1,2,3,4,99)))
                     .onSuccess {
                         binding.textOutput.text = "success"
                     }

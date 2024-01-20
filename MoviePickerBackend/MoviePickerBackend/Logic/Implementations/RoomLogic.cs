@@ -96,21 +96,50 @@ namespace MoviePickerBackend.Logic.Implementations
             }
             else
             {
-                var voteSum = db.VoteSums.FirstOrDefault(x => x.MovieId == vote.MovieId && x.RoomCode == roomCode);
-                if (voteSum == null)
+                AddVote(roomCode, vote.MovieId);
+                db.SaveChanges();
+
+                return Task.FromResult(new LogicResult());
+            }
+        }
+
+        private void AddVote(string roomCode, int movieId)
+        {
+            var voteSum = db.VoteSums.FirstOrDefault(x => x.MovieId == movieId && x.RoomCode == roomCode);
+            if (voteSum == null)
+            {
+                voteSum = new VoteSum
                 {
-                    voteSum = new VoteSum
-                    {
-                        RoomCode = roomCode,
-                        MovieId = vote.MovieId,
-                        NumVotes = 1,
-                    };
-                    db.VoteSums.Add(voteSum);
-                }
-                else
+                    RoomCode = roomCode,
+                    MovieId = movieId,
+                    NumVotes = 1,
+                };
+                db.VoteSums.Add(voteSum);
+            }
+            else
+            {
+                voteSum.NumVotes++;
+                db.VoteSums.Update(voteSum);
+            }
+        }
+
+        public Task<LogicResult> VoteList(string roomCode, VoteListDTO votes)
+        {
+            roomCode = roomCode.ToUpper();
+            var room = db.Rooms.FirstOrDefault(x => x.RoomCode == roomCode);
+            if (room == null)
+            {
+                return Task.FromResult(new LogicResult(ErrorResult.NotFound));
+            }
+            if (room.IsClosed)
+            {
+                return Task.FromResult(new LogicResult(ErrorResult.Closed));
+            }
+            else
+            {
+                foreach (var vote in votes.MovieIds.Distinct())
                 {
-                    voteSum.NumVotes++;
-                    db.VoteSums.Update(voteSum);
+                    AddVote(roomCode, vote);
                 }
                 db.SaveChanges();
 
