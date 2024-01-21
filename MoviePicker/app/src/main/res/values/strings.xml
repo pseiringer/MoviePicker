@@ -20,7 +20,7 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_settings">Settings</string>
     <string name="title_preferences">Settings</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">MoviePicker Settings</string>
     <string name="text_directed_by">DIRECTED BY</string>
     <string name="placeholder_text_runtime">%d min.</string>
     <string name="text_add_to_watchlist">Add to Watchlist</string>
